@@ -88,6 +88,17 @@ textarea{min-height:72px;resize:vertical}
 input:hover,select:hover,textarea:hover{border-color:var(--line2)}
 input:focus,select:focus,textarea:focus{border-color:var(--purple);box-shadow:var(--focus)}
 select:invalid,input:invalid{border-color:rgba(255,159,67,.72)}
+/* iOS Safari：date/time 原生外觀會撐開固有寬度，導致小螢幕破版 */
+input[type="date"],input[type="time"]{
+  -webkit-appearance:none;appearance:none;
+  display:block;width:100%;min-width:0;max-width:100%;
+  min-height:44px;/* appearance:none 後 iOS 會塌陷高度 */
+}
+input[type="date"]::-webkit-date-and-time-value,
+input[type="time"]::-webkit-date-and-time-value{
+  text-align:left;margin:0;min-height:1.4em;
+}
+.form-row>div{min-width:0}
 
 /* ── 按鈕 ─────────────────────────── */
 .btn{border:0;border-radius:13px;padding:12px 16px;background:linear-gradient(135deg,#a595dd,#8f7ecc);color:#fff;font-weight:800;
